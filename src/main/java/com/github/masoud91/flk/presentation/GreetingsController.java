@@ -20,4 +20,6 @@ public class GreetingsController {
                 .body(new GreetingResponseDto("Welcome " + requestDto.getUsername() + "!"));
     }
 
+
+
 }
