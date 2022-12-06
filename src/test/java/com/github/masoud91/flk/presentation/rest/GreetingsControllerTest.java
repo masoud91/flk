@@ -28,7 +28,7 @@ class GreetingsControllerTest {
     }
 
     @Test
-    void shouldCreateAnItemWithPriceEqualsToZero() throws Exception {
+    void should_say_welcome_to_the_user() throws Exception {
         GreetingRequestDto dto = new GreetingRequestDto("John");
 
         mockMvc.perform(
