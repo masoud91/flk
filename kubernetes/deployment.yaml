@@ -199,3 +199,23 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: flnk
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "flnk-service"
+  namespace: "default"
+  labels:
+    app: "flnk-deployment"
+    app.kubernetes.io/managed-by: "gcp-cloud-build-deploy"
+    app.kubernetes.io/name: "flnk"
+    app.kubernetes.io/version: "25b4175c5fd7f5859e8c9b5553af8d8143cb3b20"
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  selector:
+    app: "flnk-deployment"
+  type: "LoadBalancer"
+  loadBalancerIP: ""
