@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: getting-started
-spec:
-  containers:
-    - name: flk
-      image: eu.gcr.io/flnk-370323/flk/hello@sha256:4c8a4fb2bfb10f4de54a15b3b324eac47210b70cddc4a7b32518e1b2f8698daf
