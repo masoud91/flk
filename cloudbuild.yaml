@@ -17,6 +17,7 @@ steps:
       - 'clean'
       - 'package'
       - '--batch-mode'
+      - 'Dmaven.test.skip=true'
     volumes:
       - path: '/cache/.m2'
         name: 'm2_cache'
