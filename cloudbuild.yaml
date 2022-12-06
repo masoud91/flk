@@ -5,7 +5,7 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'gs://${_BUCKET}/cache/.m2'
+      - 'gs://bucket-ci-cache/cache/.m2'
       - '/cache/.m2'
     volumes:
       - path: '/cache/.m2'
@@ -30,7 +30,7 @@ steps:
       - 'rsync'
       - '-r'
       - '/cache/.m2'
-      - 'gs://${_BUCKET}/cache/.m2/'
+      - 'gs://bucket-ci-cache/cache/.m2/'
     volumes:
       - path: '/cache/.m2'
         name: 'm2_cache'
