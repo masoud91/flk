@@ -1,15 +1,15 @@
 steps:
-  # Retrieve the cached .m2 directory from GCS
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - 'gs://bucket-ci-cache/cache/.m2'
-      - '/cache/.m2'
-    volumes:
-      - path: '/cache/.m2'
-        name: 'm2_cache'
+#  # Retrieve the cached .m2 directory from GCS
+#  - name: 'gcr.io/cloud-builders/gsutil'
+#    args:
+#      - '-m'
+#      - 'rsync'
+#      - '-r'
+#      - 'gs://bucket-ci-cache/cache/.m2'
+#      - '/cache/.m2'
+#    volumes:
+#      - path: '/cache/.m2'
+#        name: 'm2_cache'
 
   # Build Maven
   - name: 'gcr.io/cloud-builders/mvn'
@@ -17,24 +17,24 @@ steps:
       - 'clean'
       - 'package'
       - '--batch-mode'
-      - 'Dmaven.test.skip=true'
+      - '-Dmaven.test.skip=true'
     volumes:
       - path: '/cache/.m2'
         name: 'm2_cache'
     env:
       - MAVEN_OPTS=-Dmaven.repo.local=/cache/.m2
 
-  # Update cached .m2 directory on GCS with any additional dependencies downloaded during the build.
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '/cache/.m2'
-      - 'gs://bucket-ci-cache/cache/.m2/'
-    volumes:
-      - path: '/cache/.m2'
-        name: 'm2_cache'
+#  # Update cached .m2 directory on GCS with any additional dependencies downloaded during the build.
+#  - name: 'gcr.io/cloud-builders/gsutil'
+#    args:
+#      - '-m'
+#      - 'rsync'
+#      - '-r'
+#      - '/cache/.m2'
+#      - 'gs://bucket-ci-cache/cache/.m2/'
+#    volumes:
+#      - path: '/cache/.m2'
+#        name: 'm2_cache'
 
   # Build docker image
   - name: gcr.io/cloud-builders/docker
