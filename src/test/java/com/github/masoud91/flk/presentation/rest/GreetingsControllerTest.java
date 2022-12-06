@@ -38,7 +38,7 @@ class GreetingsControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.message", is("Welcome 003 John!")));
+                .andExpect(jsonPath("$.message", is("Welcome 004 John!")));
     }
 
 }
