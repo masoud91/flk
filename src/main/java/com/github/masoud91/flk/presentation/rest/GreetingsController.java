@@ -14,7 +14,7 @@ public class GreetingsController {
     ResponseEntity<GreetingResponseDto> greeting(@RequestBody GreetingRequestDto requestDto) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new GreetingResponseDto("Welcome " + requestDto.getUsername() + "!"));
+                .body(new GreetingResponseDto("Welcome " + requestDto.getUsername() + "!!!"));
     }
 
 }
